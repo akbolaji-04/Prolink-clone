@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  /* Core colors */
+  --background: #f6f7fb;
+  --surface: #ffffff;
+  --foreground: #071333; /* darker, more readable text */
+  --muted: #5b6b78; /* slightly stronger muted color */
+  --heading: #07294a; /* brand heading blue for titles */
+  --brand-blue-600: #0B63A5; /* logo primary blue */
+  --brand-blue-700: #094F86;
+  --brand-green-600: #63A532; /* logo green */
+  --brand-green-500: #7CC242;
+  --accent: var(--brand-green-500);
+  --success: #10b981;
+  --danger: #ef4444;
+
+  /* Layout */
+  --radius: 12px;
+  --glass: rgba(255,255,255,0.6);
+  --card-shadow: 0 6px 18px rgba(12, 15, 24, 0.08);
+}
+
+/* removed unsupported @theme rule to improve compatibility with PostCSS/Tailwind build */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #07080a;
+    --surface: #0b1220;
+    --foreground: #e6eef8;
+    --muted: #94a3b8;
+    --card-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  }
+}
+
+body {
+  background: linear-gradient(180deg, var(--background) 0%, #eef6ff 100%);
+  color: var(--foreground);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
+}
+
+/* Typography helpers */
+h1, h2, h3, h4 {
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.125rem; }
+
+.subtitle { color: var(--brand-green-600); font-weight: 600; }
+.muted { color: var(--muted); }
+
+/* Container utilities */
+.site-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.card .card-body {
+  padding: 1rem 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--brand-blue-600);
+  color: white;
+}
+
+.btn-primary:hover { background: var(--brand-blue-700); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.muted { color: var(--muted); }
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+}
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(12,15,24,0.08);
+}
+
+.search-input {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(15,23,42,0.06);
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  min-width: 220px;
+}
+
+.stat {
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+}
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+  .search-input { display: none; }
+}
